@@ -1,0 +1,18 @@
+.rel-card{ width: 260px; user-select:none; }
+.rel-frame{
+  position:relative; border-radius:12px; overflow:hidden; isolation:isolate;
+  background: #0c0c0e; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.rel-img{ width:100%; display:block; aspect-ratio:1/1; object-fit:cover; filter: contrast(1.02) saturate(1.02); }
+
+/* halos RGB + violet */
+.rel-glow{ position:absolute; inset:-2px; mix-blend-mode:screen; pointer-events:none; filter:blur(8px); opacity:.35; }
+.rel-glow-v{ background: radial-gradient(80% 80% at 50% 50%, rgba(155,0,255,.8), transparent 70%); }
+.rel-glow-r{ background: radial-gradient(70% 70% at 30% 30%, rgba(255,60,60,.8), transparent 60%); }
+.rel-glow-b{ background: radial-gradient(70% 70% at 70% 70%, rgba(60,180,255,.7), transparent 60%); }
+
+.rel-title{ margin:.6rem 0 .15rem; font-size:16px; color:#e7e7e9; font-weight:700; letter-spacing:.3px; }
+.rel-sub{ margin:0; color:#a8abb3; font-size:13px; opacity:.9; }
+
+/* micro hover */
+.rel-card:hover .rel-glow{ opacity:.5; filter: blur(10px); }

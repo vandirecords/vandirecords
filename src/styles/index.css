@@ -1,0 +1,355 @@
+/* === Fond "carbone" + grain discret pour la vibe underground === */
+:root {
+  --bg-1: #0a0a0a;
+  --bg-2: #0c0c0c;
+  --accent: #c00000;   /* rouge Vandi pour de petites touches */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  color: #e6e6e6;
+  background:
+    /* fibres croisées type carbone */
+    repeating-linear-gradient(45deg,  #0f0f10 0 2px, #0b0b0c 2px 4px),
+    repeating-linear-gradient(-45deg, #101011 0 2px, #0c0c0d 2px 4px),
+    linear-gradient(var(--bg-1), var(--bg-2));
+  background-attachment: fixed;
+}
+
+/* grain très fin superposé (pas de fichier, pur CSS) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: .25;
+  mix-blend-mode: soft-light;
+}
+.section{ margin-top:28px; }
+.h2{ font-size:20px; margin:0 0 12px; color:#e9e9eb; font-weight:800; letter-spacing:.3px; }
+.rel-grid{
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap:18px; align-items:start; max-width:680px;
+}
+.todo{ margin:0; padding-left:18px; color:#c2c6cf; }
+.todo li{ margin:6px 0; }
+.bio{ max-width:720px; color:#cfd2d8; }
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Staatliches&display=swap');
+
+:root{
+  --bg:#0f0f11;
+  --bg-soft:#141418;
+  --fg:#e9e9ea;
+  --muted:#b4b4b7;
+  --accent:#8a2be2;         /* violet neon pour les petits traits */
+  --card:#15151b;
+  --card-border:#262633;
+  --glow: rgba(138,43,226,0.35); /* halo violet */
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.55;
+}
+
+/* grain + léger carbone */
+body::before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 4px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 .06 .09'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+  opacity:.45;
+  mix-blend-mode: lighten;
+}
+
+/* container centré */
+.container{
+  width:100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+/* bar violette fine */
+.hr{
+  height:3px; border:0; margin:16px 0 28px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* Header/Nav */
+.header{
+  position:sticky; top:0; z-index:10;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(10,10,12,.9), rgba(10,10,12,.6));
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:12px 20px; max-width:1080px; margin:0 auto;
+}
+.brand{font-family: Staatliches, Inter, sans-serif; letter-spacing:.5px; font-size:26px;}
+.nav a{
+  color:var(--fg); text-decoration:none; opacity:.9;
+  padding:8px 10px; border-radius:8px;
+}
+.nav a:hover{ background: rgba(255,255,255,0.05); }
+
+/* Titres */
+.h1{
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  display:flex; align-items:center; gap:10px;
+}
+.ghost-logo{
+  width:28px; height:28px; opacity:.15; filter:grayscale(1);
+}
+
+/* Grid des singles */
+.grid{
+  display:grid; gap:20px;
+  grid-template-columns: repeat(1, minmax(0,1fr));
+}
+@media (min-width: 640px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (min-width: 980px){ .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+/* Card cover avec halo */
+.card{
+  background: var(--card);
+  border:1px solid var(--card-border);
+  border-radius:14px;
+  padding:14px;
+  position:relative;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  box-shadow: 0 0 0 0 var(--glow);
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px 2px var(--glow);
+  border-color: rgba(138,43,226,0.55);
+}
+.cover{
+  width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;
+  display:block; background:#0b0b0e;
+}
+.card-title{ margin:10px 2px 2px; font-weight:700; }
+.card-sub{ color:var(--muted); font-size:.92rem; }
+
+/* Sections */
+.section-title{ font-size: clamp(18px, 2.6vw, 24px); margin: 26px 0 12px; font-weight:800; }
+.list{ margin:0; padding-left:18px; }
+.small{ color:var(--muted); font-size:.95rem; }
+
+/* Footer */
+.footer{
+  margin-top:48px; padding:28px 0; text-align:center; color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+:root{
+  --maxw: 1100px;
+  --fg: #e9e9ea;
+  --muted: #b8b8c0;
+  --accent: #a200ff;
+}
+
+/* Container global centré */
+.container{
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0 20px;
+}
+
+/* Bandeau/hero (fond texture + watermark discret) */
+.hero{
+  position: relative;
+  padding: 40px 0 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid rgba(162,0,255,.25);
+}
+
+/* watermark : logo discret, taille contrôlée */
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(transparent, rgba(0,0,0,.65) 70%),
+    url("/assets/texture-noise.png");
+  background-size: 100% 100%, 300px;
+  opacity:.45;
+  pointer-events:none;
+}
+
+/* petit logo fantôme en haut-gauche (ne grandit plus) */
+.hero::after{
+  content:"";
+  position:absolute; top:10px; left:8px;
+  width: clamp(90px, 8vw, 150px); aspect-ratio: 1/1;
+  background: url("/assets/logo-vandi.png") center/contain no-repeat;
+  opacity:.06; filter: saturate(0);
+  pointer-events:none;
+}
+
+/* Titres + texte */
+h1,h2{ font-weight:800; letter-spacing:.2px; }
+p, li, small{ color: var(--muted); }
+
+/* Grille responsive des pochettes */
+.release-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
+  align-items:start;
+}
+
+/* Carte pochette */
+.release-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:12px;
+  position:relative;
+  overflow:hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+/* halo léger */
+.release-card::before{
+  content:"";
+  position:absolute; inset:-30%;
+  background: radial-gradient(40% 35% at 50% 15%, rgba(162,0,255,.18), transparent 60%);
+  opacity:.65; pointer-events:none; filter: blur(22px);
+}
+
+/* l’image reste carrée et contenue */
+.release-card .cover{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  border-radius:12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+}
+
+/* hover doux desktop */
+@media (hover:hover){
+  .release-card:hover{
+    transform: translateY(-4px);
+    border-color: rgba(162,0,255,.28);
+    box-shadow: 0 16px 40px rgba(162,0,255,.08), 0 12px 34px rgba(0,0,0,.45);
+  }
+}
+
+/* Meta sous la pochette */
+.release-meta{
+  margin-top:10px;
+}
+.release-title{ font-weight:700; }
+.release-sub{ color: var(--muted); font-size:.92rem; }
+
+/* Section “À venir” et Bio centrées */
+.section{ margin: 28px 0; }
+.section .container{ padding-top: 4px; padding-bottom: 12px; }
+/* === HERO : centrage + taille logo glitch === */
+.hero .hero-content{
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* le composant LogoGlitch jsx est dans .logo-wrap */
+.hero .logo-wrap{
+  margin: 12px auto 2px;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,.45));
+}
+@media (min-width: 760px){
+  .hero .logo-wrap{ transform: scale(1.15); }
+}
+
+/* === Titre "VHS glow" discret (utilise ta classe .brand-title sur <h1>) === */
+.brand-title{
+  font-weight: 800;
+  letter-spacing: .4px;
+  text-shadow:
+    0 0 0px rgba(255,255,255,.0),
+    -1px 0 rgba(180,0,255,.22),
+    1px 0 rgba(0,200,255,.18);
+  position: relative;
+  animation: vhs-flicker 2.8s infinite steps(60);
+}
+@keyframes vhs-flicker{
+  0%, 89%, 92%, 100% { opacity: 1 }
+  90%, 91%, 93% { opacity: .94 }
+}
+/* léger scanline qui défile (ultra soft) */
+.brand-title::after{
+  content:"";
+  position:absolute; left:-2%; right:-2%; top:-15%;
+  height: 120%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.03), rgba(255,255,255,.03) 1px,
+    transparent 1px, transparent 3px
+  );
+  mix-blend-mode: soft-light;
+  pointer-events:none;
+  animation: scan 6s linear infinite;
+  border-radius: 8px;
+}
+@keyframes scan{
+  from { transform: translateY(-8%) }
+  to   { transform: translateY(8%) }
+}
+
+/* === Cards : halo + état hover un peu plus franc (déjà clean chez toi) === */
+.release-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:12px;
+  position:relative;
+  overflow:hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
+  will-change: transform, box-shadow, filter;
+}
+.release-card:hover{
+  transform: translateY(-4px);
+  border-color: rgba(162,0,255,.28);
+  box-shadow: 0 16px 40px rgba(162,0,255,.08), 0 12px 34px rgba(0,0,0,.45);
+  filter: saturate(1.03);
+}
+
+/* Couvertures : taille sûre partout */
+.release-card .cover{
+  width:100%;
+  max-width: 520px;        /* sécurité desktop géant */
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  margin-inline:auto;
+  border-radius:12px;
+}
+
+/* Grille : deux colonnes dès 640px, centre bien les items */
+.release-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  align-items:start;
+  justify-items: center;
+}

@@ -1,0 +1,67 @@
+.logo-wrap {
+  position: relative;
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+}
+
+.logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.6));
+  /* très léger sharpen visuel */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.logo.base {
+  z-index: 1;
+}
+
+/* couches “glitch” RGB subtiles */
+.logo.r {
+  z-index: 0;
+  mix-blend-mode: screen;
+  transform: translateX(0);
+  filter: drop-shadow(0 0 0 rgba(0,0,0,0)) hue-rotate(0deg);
+  animation: glitchR 3.2s infinite steps(1);
+  opacity: 0.55;
+}
+
+.logo.b {
+  z-index: 0;
+  mix-blend-mode: screen;
+  transform: translateX(0);
+  animation: glitchB 3.2s infinite steps(1) .08s;
+  opacity: 0.55;
+}
+
+/* keyframes “VHS clean” (pas trop fort) */
+@keyframes glitchR {
+  0%, 89%, 100% { transform: translate(0,0); filter: hue-rotate(0deg); }
+  90% { transform: translate(-1px, -1px); filter: hue-rotate(-10deg) saturate(1.2); }
+  92% { transform: translate(1px, 1px); filter: hue-rotate(10deg) saturate(1.2); }
+}
+
+@keyframes glitchB {
+  0%, 89%, 100% { transform: translate(0,0); filter: hue-rotate(0deg); }
+  90% { transform: translate(1px, -1px); filter: hue-rotate(190deg) saturate(1.25); }
+  92% { transform: translate(-1px, 1px); filter: hue-rotate(210deg) saturate(1.25); }
+}
+
+/* micro scanlines sur le conteneur pour parfaire l’effet */
+.logo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: .25;
+  mix-blend-mode: soft-light;
+  border-radius: 4px;
+}

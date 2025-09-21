@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: #f5f5f5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #111;
+  box-shadow: 0 0 10px rgba(255,0,0,0.5), 0 0 20px rgba(0,0,255,0.3);
+}
+
+.navbar h1 {
+  color: #ff4444;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: #111;
+}
